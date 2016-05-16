@@ -11,9 +11,11 @@ import com.venus.api.domain.AuthUserDto;
 import com.venus.api.domain.CreateUserDto;
 import com.venus.api.domain.ResponseUserDto;
 import com.venus.api.repository.UserProfileRepository;
+import com.venus.api.repository.UserRoleRepository;
 import com.venus.api.repository.UsersRepository;
 import com.venus.api.repository.entity.Roles;
 import com.venus.api.repository.entity.UserProfile;
+import com.venus.api.repository.entity.UserRole;
 import com.venus.api.repository.entity.Users;
 import com.venus.api.service.UserService;
 
@@ -26,6 +28,9 @@ public class UserServiceImpl extends BaseService implements UserService {
 	
 	@Autowired
 	private UserProfileRepository userProfileRepository;
+	
+	@Autowired
+	private UserRoleRepository userRoleRepository;
 
 	public List<ResponseUserDto> findAll() {
 
@@ -64,6 +69,12 @@ public class UserServiceImpl extends BaseService implements UserService {
 		user.setUserId(profile.getUserId());
 		
 		usersRepository.save(user);
+		
+		UserRole userRole = new UserRole();
+		userRole.setUserId(profile.getUserId());
+		userRole.setRoleId(createUser.getRoleId());
+		
+		userRoleRepository.save(userRole);
 	}
 
 	public boolean exist(Long userId) {
