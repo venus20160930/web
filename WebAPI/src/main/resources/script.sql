@@ -42,22 +42,14 @@ create table user_connection (
    secret VARCHAR(255) NOT NULL,
    refresh_token VARCHAR(255) NOT NULL,
    expire_time bigint NOT NULL
-   PRIMARY KEY (user_id, provider_id, provider_user_id),
+   PRIMARY KEY (user_id, provider_id, provider_user_id)
 );
 
 create table sample (
    sample_id BIGINT primary key,
    sample_name VARCHAR(255) NOT NULL,
-   sample_age int,
+   sample_age int
 );
 
 INSERT INTO roles(name) VALUES ('USER');
 INSERT INTO roles(name) VALUES ('ADMIN');
-
-INSERT INTO public.users(
-            user_id, password, email, state)
-    VALUES (1, '123456', 'tpt109@gmail.com', 1);
-    
-    INSERT INTO public.user_role(
-            user_id, role_id)
-    VALUES (1, 2);
