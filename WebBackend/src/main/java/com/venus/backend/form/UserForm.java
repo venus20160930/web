@@ -17,5 +17,13 @@ public class UserForm extends UserDto {
 		this.confirmPassword = confirmPassword;
 	}
 	
-	
+	private Boolean adminRole;
+
+	public Boolean getAdminRole() {
+		return adminRole;
+	}
+
+	public void setAdminRole(Boolean adminRole) {
+		this.adminRole = adminRole;
+	}
 }

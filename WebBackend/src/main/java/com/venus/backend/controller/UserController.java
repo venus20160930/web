@@ -76,7 +76,13 @@ public class UserController extends BaseController {
     	if (!result.hasErrors()) {
     		
     		CreateUserDto createUserDto = (CreateUserDto) toObject(user, CreateUserDto.class);
-        	createUserDto.setRoleId(1);
+    		if (user.getAdminRole()) {
+    			createUserDto.setRoleId(2);
+			}else{
+				
+				createUserDto.setRoleId(1);
+			}
+        	
         	createUserDto.setState("1");
         	
         	userService.save(createUserDto);

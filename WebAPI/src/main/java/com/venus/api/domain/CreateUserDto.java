@@ -14,7 +14,16 @@ public class CreateUserDto {
 	private String state;
 	private String phone;
 	private List<Roles> roles;
+	private long roleId;
 	
+	public long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(long roleId) {
+		this.roleId = roleId;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
