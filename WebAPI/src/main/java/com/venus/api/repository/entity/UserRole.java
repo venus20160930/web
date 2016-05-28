@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
-@Entity(name = "user_role")
+@Entity(name = "venus_user_role")
 @IdClass(UserRole.class)
 public class UserRole implements Serializable {
 	/**

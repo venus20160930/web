@@ -2,13 +2,14 @@ package com.venus.api.service;
 
 import java.util.List;
 
-import com.venus.api.domain.AuthUserDto;
-import com.venus.api.domain.CreateUserDto;
-import com.venus.api.domain.ResponseUserDto;
+import com.venus.common.dto.AuthUserDto;
+import com.venus.common.dto.CreateUserDto;
+import com.venus.common.dto.UserDto;
+
 
 public interface UserService {
 
-	public List<ResponseUserDto> findAll();
+	public List<UserDto> findAll();
 	
 	public void save(CreateUserDto createUser);
 	
@@ -18,7 +19,7 @@ public interface UserService {
 	
 	public long delete(Long userId);
 	
-	public ResponseUserDto findByUserId(Long userId);
+	public UserDto findByUserId(Long userId);
 	
 	public AuthUserDto auth(String email);
 }

@@ -19,7 +19,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
 	</definition>
 	
-	<definition name="create" extends="layout.basic">
+	<definition name="registerUserView" extends="layout.basic">
 		<put-attribute name="body" value="/WEB-INF/views/user/create.jsp" />
 	</definition>
 	

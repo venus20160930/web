@@ -16,9 +16,14 @@ public class EnvComponent {
 		return StringUtils.join(getApiUri(), "user/");
 	}
 	
+	public String getCreateUserUri() {
+		
+		return StringUtils.join(getUserUri(), "createUser");
+	}
+	
 	public String getAuthUri() {
 		
-		return StringUtils.join(getUserUri(), "auth/");
+		return StringUtils.join(getUserUri(), "authByEmail?email=");
 	}
 	
 	public String getRoleUri() {

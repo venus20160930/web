@@ -38,7 +38,8 @@
 		<tr>
 			<td><spring:message code="user.phone"/></td>
 			<td><form:input type="text" path="phone" id="phone" /></td>
-		</tr>	
+		</tr>
+			
 		<tr colspan="2">
 			<td><input type="submit" value="<spring:message code="btn.signUp"/>" /></td>
 		</tr>

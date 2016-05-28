@@ -7,17 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.venus.api.domain.AuthUserDto;
-import com.venus.api.domain.CreateUserDto;
-import com.venus.api.domain.ResponseUserDto;
-import com.venus.api.repository.UserProfileRepository;
 import com.venus.api.repository.UserRoleRepository;
 import com.venus.api.repository.UsersRepository;
 import com.venus.api.repository.entity.Roles;
-import com.venus.api.repository.entity.UserProfile;
 import com.venus.api.repository.entity.UserRole;
 import com.venus.api.repository.entity.Users;
 import com.venus.api.service.UserService;
+import com.venus.common.dto.AuthUserDto;
+import com.venus.common.dto.CreateUserDto;
+import com.venus.common.dto.UserDto;
 
 @Service
 @Transactional
@@ -27,27 +25,26 @@ public class UserServiceImpl extends BaseService implements UserService {
 	private UsersRepository usersRepository;
 	
 	@Autowired
-	private UserProfileRepository userProfileRepository;
-	
-	@Autowired
 	private UserRoleRepository userRoleRepository;
 
-	public List<ResponseUserDto> findAll() {
+	public List<UserDto> findAll() {
 
 		List<Users> listUsers =(List<Users>) usersRepository.findAll();
 		
-		List<ResponseUserDto> listResponseUserDto = new ArrayList<ResponseUserDto>();
+		List<UserDto> listResponseUserDto = new ArrayList<UserDto>();
 		
-		ResponseUserDto responseUserDto ;
+		UserDto responseUserDto ;
 		
 		for (Users user : listUsers) {
-			responseUserDto = new ResponseUserDto();
+			responseUserDto = new UserDto();
 			responseUserDto.setEmail(user.getEmail());
+			/*
 			if (user.getUserProfile() != null) {
 				responseUserDto.setFirstName(user.getUserProfile().getFirstName());
 				responseUserDto.setLastName(user.getUserProfile().getLastName());
 				responseUserDto.setPhone(user.getUserProfile().getPhone());
 			}
+			*/
 			
 			listResponseUserDto.add(responseUserDto);
 			
@@ -59,21 +56,15 @@ public class UserServiceImpl extends BaseService implements UserService {
 
 	public void save(CreateUserDto createUser) {
 		
-		UserProfile profile = (UserProfile) convertComponent.toObject(
-				createUser, UserProfile.class);
-		
-		userProfileRepository.save(profile);
-		
 		Users user = (Users) convertComponent.toObject(
 				createUser, Users.class);
-		user.setUserId(profile.getUserId());
+		user.setFullName(createUser.getFirstName() + " " + createUser.getLastName()); 
 		
 		usersRepository.save(user);
 		
 		UserRole userRole = new UserRole();
-		userRole.setUserId(profile.getUserId());
 		userRole.setRoleId(createUser.getRoleId());
-		
+		userRole.setUserId(user.getUserId());
 		userRoleRepository.save(userRole);
 	}
 
@@ -93,17 +84,17 @@ public class UserServiceImpl extends BaseService implements UserService {
 		if (exist(userId)) {
 			
 			usersRepository.delete(userId);
-			userProfileRepository.delete(userId);
+			//userProfileRepository.delete(userId);
 			count++;
 		}
 		
 		return count;
 	}
 
-	public ResponseUserDto findByUserId(Long userId) {
+	public UserDto findByUserId(Long userId) {
 		
-		return (ResponseUserDto) convertComponent.toObject(
-				userProfileRepository.findOne(userId), ResponseUserDto.class); 
+		return (UserDto) convertComponent.toObject(
+				usersRepository.findOne(userId), UserDto.class); 
 	}
 
 	public AuthUserDto auth(String email) {

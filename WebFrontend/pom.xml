@@ -152,6 +152,11 @@
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
         </dependency>
+        <dependency>
+        	<groupId>com.venus</groupId>
+        	<artifactId>WebCommon</artifactId>
+        	<version>1.0</version>
+        </dependency>
 	</dependencies>
 
 	<build>

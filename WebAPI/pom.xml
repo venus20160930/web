@@ -7,6 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>WebAPI Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
   <dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -99,6 +100,13 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.venus</groupId>
+			<artifactId>WebCommon</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 

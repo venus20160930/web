@@ -2,7 +2,7 @@ package com.venus.frontend.service;
 
 import java.util.List;
 
-import com.venus.frontend.dto.RoleDto;
+import com.venus.common.dto.RoleDto;
 
 public interface RoleService {
 

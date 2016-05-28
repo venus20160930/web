@@ -29,3 +29,4 @@
 </div>
 <div><a href="<c:url value='/auth/facebook' />">Sign in with Facebook</a></div>
 <div><a href="<c:url value='/auth/google' />">Sign in with Google</a></div>
+<div><a href="${pageContext.request.contextPath}/signin">Register New User</a></div>

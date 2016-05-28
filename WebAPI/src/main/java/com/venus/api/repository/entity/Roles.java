@@ -8,16 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity
+(name = "venus_role")
 public class Roles {
 
 	@Id
-	@SequenceGenerator(name="role-gen", sequenceName="roles_role_id_seq", 
-			initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role-gen")
 	@Column(name="role_id")
 	private long roleId;
 	
-	@Column(name="name")
+	@Column(name="role_name")
 	private String name;
 
 	public long getRoleId() {
