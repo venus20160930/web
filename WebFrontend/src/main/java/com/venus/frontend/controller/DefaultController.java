@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
-public class DefaultController {
+public class DefaultController  extends BaseController{
 	
 	// config default controller
 	@RequestMapping(method = RequestMethod.GET)
